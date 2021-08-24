@@ -124,7 +124,7 @@ func DetectHost() (host Host, rev int, err error) {
 	switch {
 	case strings.Contains(model, "ARMv7") && (strings.Contains(hardware, "AM33XX") || strings.Contains(hardware, "AM335X")):
 		return HostBBB, rev, nil
-	case strings.Contains(hardware, "BCM2708") || strings.Contains(hardware, "BCM2709") || strings.Contains(hardware, "BCM2835"):
+ 	case strings.Contains(hardware, "BCM2711") || strings.Contains(hardware, "BCM2709") || strings.Contains(hardware, "BCM2708") || strings.Contains(hardware, "BCM2835") || strings.Contains(hardware, "BCM2836") || strings.Contains(hardware, "BCM2837"):
 		return HostRPi, rev, nil
 	case hardware == "Allwinner sun4i/sun5i Families":
 		if major < 4 || (major == 4 && minor < 4) {
@@ -134,6 +134,6 @@ func DetectHost() (host Host, rev int, err error) {
 		}
 		return HostCHIP, rev, nil
 	default:
-		return HostNull, 0, fmt.Errorf(`embd: your host "%v:%v" is not supported at this moment. request support at https://github.com/talkkonnect/embd/issues`, host, model)
+		return HostNull, 0, fmt.Errorf(`embd: your host "%v:%v" is not supported at this moment. request support at https://github.com/kidoman/embd/issues`, host, model)
 	}
 }
